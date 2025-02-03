@@ -1,0 +1,133 @@
+/*
+    Con esto se crea un log para la view, esto es porque la view es de tipo 
+    fast. (admin)
+*/
+CREATE MATERIALIZED VIEW LOG ON jardineria.CLIENTE;
+
+// Derecho para que jardineria pueda hacer vistas materializadas (admin)
+GRANT CREATE MATERIALIZED VIEW to jardineria
+
+ /*
+ Se uso se es una consulta pesada, si no no.
+ Es una vista en memoria, y consume espacio.
+ En oracle no soporta valores nulos
+ */
+CREATE MATERIALIZED VIEW JARDINERIA.MV_EJEMPLO 
+    BUILD IMMEDIATE
+    REFRESH FAST
+    START WITH SYSDATE NEXT SYSDATE +1 
+    AS
+    SELECT CODIGO_CLIENTE, NOMBRE_CLIENTE FROM jardineria.CLIENTE;
+    
+
+// Forzar la vista para que se actualice
+BEGIN
+    DBMS_MVIEW.REFRESH('MV_EJEMPLO');
+END;
+
+// Con esto veo las vistas que fueron creadas (admin)
+SELECT * FROM all_mviews;
+
+// BULK COLLECT
+CREATE OR REPLACE PROCEDURE pa_carga_masiva AS
+BEGIN
+  BEGIN
+    EXECUTE IMMEDIATE 'TRUNCATE TABLE VENTAS'; // No hay rollback con trucate
+  END;
+  BEGIN
+    DECLARE
+      TYPE t_tabla IS TABLE OF VENTAS%ROWTYPE;
+      l_datos t_tabla;
+      CURSOR c_tabla IS
+        SELECT * FROM jardineria.v_pedidos;
+    BEGIN
+      OPEN c_tabla;
+      LOOP
+        FETCH c_tabla BULK COLLECT
+          INTO l_datos LIMIT 2000;
+        FORALL i IN 1 .. l_datos.count
+          INSERT INTO clientes.ventas VALUES l_datos (i);
+        EXIT WHEN c_tabla%NOTFOUND;
+      END LOOP;
+      CLOSE c_tabla;
+    END;
+  END;
+  END;
+  
+  /* Ejemplo de un cursor sencillo
+  DECLARE CURSOR datos is
+  SELECT * FROM cliente;
+  BEGIN
+    FOR i IN datos loop
+        UPDATE ..... // UNO EN UNO
+    END loop;
+  END;
+  */
+  
+  // Esto es una vista para trabajar en ella
+ CREATE OR REPLACE VIEW JARDINERIA.V_VENTAS AS 
+  SELECT c.nombre_cliente,c.ciudad, PR.NOMBRE PRODUCTO,
+  EXTRACT(YEAR FROM P.FECHA_PEDIDO) ANNIO, P.FECHA_PEDIDO, NVL(P.ESTADO,'SIN ESTADO') ESTADO,
+  NVL(DP.CANTIDAD,0) CANTIDAD, DP.PRECIO_UNIDAD FROM PEDIDO P
+  INNER JOIN DETALLE_PEDIDO DP
+  ON P.CODIGO_PEDIDO=DP.CODIGO_PEDIDO
+  INNER JOIN CLIENTE C
+  ON P.CODIGO_CLIENTE=C.CODIGO_CLIENTE
+  INNER JOIN PRODUCTO PR
+  ON DP.CODIGO_PRODUCTO = PR.CODIGO_PRODUCTO;
+  
+// 
+SELECT * FROM JARDINERIA.V_VENTAS
+  
+// PIVOT
+ SELECT * FROM (
+ SELECT ANNIO, ESTADO, (CANTIDAD*PRECIO_UNIDAD) VENTAS 
+ FROM JARDINERIA.V_VENTAS) PIVOT (SUM(VENTAS) VENTAS, count(1) cantidad
+ FOR ESTADO IN ('Entregado' ENTREGADO, 'Pendiente' PENDIENTE, 'Rechazado' RECHAZADO))
+ 
+ 
+ // LAG // LEAD
+
+create or replace view jardineria.v_incremento as
+SELECT producto, annio,sum(cantidad*precio_unidad) ventas_actuales,
+lag(sum(cantidad*precio_unidad))over 
+( partition by producto order by annio asc )
+ventas_anterior
+FROM JARDINERIA.V_VENTAS
+group by producto, annio
+
+select i.*,(nvl(ventas_actuales,0)-nvl(ventas_anterior,0)) diferencia
+from jardineria.v_incremento i
+  
+// NTILE (PARTION BY)
+// Genera 4 percentiles
+select nombre_cliente, ventas, ntile(4) over (order by ventas desc) grupo  from (
+SELECT nombre_cliente, sum(precio_unidad*cantidad) ventas
+FROM JARDINERIA.V_VENTAS
+group by nombre_cliente)
+
+select ciudad, nombre_cliente, ventas, ntile(4) over (partition by ciudad order by ventas desc) grupo  from (
+SELECT ciudad, nombre_cliente, sum(precio_unidad*cantidad) ventas
+FROM JARDINERIA.V_VENTAS
+group by nombre_cliente, ciudad)
+  
+
+  
+ // LISTAGG
+ SELECT nombre_cliente,
+ LISTAGG(producto,',') WITHIN GROUP (ORDER BY producto) AS lista_producto
+ FROM JARDINERIA.V_VENTAS
+ GROUP BY nombre_cliente;
+ 
+  
+  // ROLLUP (resumen) // CUBE (por variable)
+  
+  select ciudad, annio, sum(cantidad*precio_unidad) ventas
+  from jardineria.v_ventas
+  group by CUBE (ciudad, annio)
+  order by 1,2
+  
+
+  
+  
+  CUBE

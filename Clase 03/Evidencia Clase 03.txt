@@ -1,0 +1,18 @@
+
+
+select * into dbo.Categories from (
+select * from Northwind.dbo.Categories
+)tc
+
+
+
+
+insert into dbo.Categories 
+select * from Northwind.dbo.Categories
+
+
+En oracle 
+create table nombre_tabla
+select * from Northwind.dbo.Categories
+
+select * from openquery(DB_ORA,'select * from cliente')

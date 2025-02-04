@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="local.jardineria"
+  DTS:DTSID="{D4D161D5-E4B8-41AA-A1FF-EBD2F0D90D27}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=local;User ID=jardineria;Provider=OraOLEDB.Oracle.1;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvvgVmrYMLESxNKlVDRWdQAAAAAACAAAAAAAQZgAAAAEAACAAAABI0FSrjIOM6YvROopRyCUUzvLuwqrD1AjpUU5te67SXgAAAAAOgAAAAAIAACAAAACvUhAo9oS2OSdJVL/B6UBPmKeFNmLemUadv0l0r6KCwoAAAAD5owPcEPmf34ScHoa1jnn3uGe+R82neM7S67M1Zm+WC3JN5Cb+PQNxEAMk7GjaLeh0kt+A+oGoAb4W+S45u9HrDdDV5JjCtjn9W4nUbbuuNOL/GXlbZEX0FTOqTvPyvI7s/6vFHfR1cY/q0Pl+gmy0banEvP4N8+LhzLIu/RGeo0AAAACQjx5PGSbiQGrgfJDcZe62MU1ZdN6dWlWnSB1+SN6hXJ9oKF2eL+MBuVssfVi0xnrQM4sATxmJRJ3PoWk1BuNh</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

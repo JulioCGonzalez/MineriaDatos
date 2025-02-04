@@ -1,0 +1,1418 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/3/2025 7:15:00 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4P1O6QD"
+  DTS:CreatorName="DESKTOP-4P1O6QD\jcgon"
+  DTS:DTSID="{8F484C47-92F5-438B-87F8-E1434027CA3B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="5130"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{E15B44E8-8A11-41ED-94D3-475C2BBEC63B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Copia de Clientes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B682BA37-E426-41E7-B36F-F901F9E63611}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copia de Clientes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copia de Clientes\Cliente Oracle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Cliente Oracle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">"JARDINERIA"."CLIENTE"</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copia de Clientes\Cliente Oracle.Connections[OleDbConnection]"
+                  connectionManagerID="{D4D161D5-E4B8-41AA-A1FF-EBD2F0D90D27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[local.jardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_CLIENTE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_CLIENTE]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_CLIENTE]"
+                      name="CODIGO_CLIENTE"
+                      precision="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[NOMBRE_CLIENTE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CLIENTE]"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[NOMBRE_CLIENTE]"
+                      name="NOMBRE_CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[NOMBRE_CONTACTO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CONTACTO]"
+                      length="30"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[NOMBRE_CONTACTO]"
+                      name="NOMBRE_CONTACTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[APELLIDO_CONTACTO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[APELLIDO_CONTACTO]"
+                      length="30"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[APELLIDO_CONTACTO]"
+                      name="APELLIDO_CONTACTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[TELEFONO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[TELEFONO]"
+                      length="15"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[TELEFONO]"
+                      name="TELEFONO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[FAX]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[FAX]"
+                      length="15"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[FAX]"
+                      name="FAX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LINEA_DIRECCION1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[LINEA_DIRECCION1]"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LINEA_DIRECCION1]"
+                      name="LINEA_DIRECCION1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LINEA_DIRECCION2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[LINEA_DIRECCION2]"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LINEA_DIRECCION2]"
+                      name="LINEA_DIRECCION2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CIUDAD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CIUDAD]"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CIUDAD]"
+                      name="CIUDAD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[REGION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[REGION]"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[REGION]"
+                      name="REGION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[PAIS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[PAIS]"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[PAIS]"
+                      name="PAIS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_POSTAL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_POSTAL]"
+                      length="10"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_POSTAL]"
+                      name="CODIGO_POSTAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      name="CODIGO_EMPLEADO_REP_VENTAS"
+                      precision="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LIMITE_CREDITO]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[LIMITE_CREDITO]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LIMITE_CREDITO]"
+                      name="LIMITE_CREDITO"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_CLIENTE]"
+                      dataType="numeric"
+                      name="CODIGO_CLIENTE"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CLIENTE]"
+                      dataType="wstr"
+                      length="50"
+                      name="NOMBRE_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CONTACTO]"
+                      dataType="wstr"
+                      length="30"
+                      name="NOMBRE_CONTACTO" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[APELLIDO_CONTACTO]"
+                      dataType="wstr"
+                      length="30"
+                      name="APELLIDO_CONTACTO" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[TELEFONO]"
+                      dataType="wstr"
+                      length="15"
+                      name="TELEFONO" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[FAX]"
+                      dataType="wstr"
+                      length="15"
+                      name="FAX" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[LINEA_DIRECCION1]"
+                      dataType="wstr"
+                      length="50"
+                      name="LINEA_DIRECCION1" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[LINEA_DIRECCION2]"
+                      dataType="wstr"
+                      length="50"
+                      name="LINEA_DIRECCION2" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CIUDAD]"
+                      dataType="wstr"
+                      length="50"
+                      name="CIUDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[REGION]"
+                      dataType="wstr"
+                      length="50"
+                      name="REGION" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[PAIS]"
+                      dataType="wstr"
+                      length="50"
+                      name="PAIS" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_POSTAL]"
+                      dataType="wstr"
+                      length="10"
+                      name="CODIGO_POSTAL" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      dataType="numeric"
+                      name="CODIGO_EMPLEADO_REP_VENTAS"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].ExternalColumns[LIMITE_CREDITO]"
+                      dataType="numeric"
+                      name="LIMITE_CREDITO"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CODIGO_CLIENTE]"
+                      dataType="numeric"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CODIGO_CLIENTE]"
+                      name="CODIGO_CLIENTE"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CLIENTE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CLIENTE]"
+                      name="NOMBRE_CLIENTE" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CONTACTO]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CONTACTO]"
+                      name="NOMBRE_CONTACTO" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[APELLIDO_CONTACTO]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[APELLIDO_CONTACTO]"
+                      name="APELLIDO_CONTACTO" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[TELEFONO]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[TELEFONO]"
+                      name="TELEFONO" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[FAX]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[FAX]"
+                      name="FAX" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[LINEA_DIRECCION1]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[LINEA_DIRECCION1]"
+                      name="LINEA_DIRECCION1" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[LINEA_DIRECCION2]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[LINEA_DIRECCION2]"
+                      name="LINEA_DIRECCION2" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CIUDAD]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CIUDAD]"
+                      name="CIUDAD" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[REGION]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[REGION]"
+                      name="REGION" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[PAIS]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[PAIS]"
+                      name="PAIS" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CODIGO_POSTAL]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CODIGO_POSTAL]"
+                      name="CODIGO_POSTAL" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      dataType="numeric"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      name="CODIGO_EMPLEADO_REP_VENTAS"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[LIMITE_CREDITO]"
+                      dataType="numeric"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[LIMITE_CREDITO]"
+                      name="LIMITE_CREDITO"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copia de Clientes\clienteOra"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="clienteOra"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[clienteOra]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copia de Clientes\clienteOra.Connections[OleDbConnection]"
+                  connectionManagerID="{BEA026A1-7350-45B8-BEA2-36E23A28F17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.STAGING]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[CODIGO_CLIENTE]"
+                      cachedDataType="numeric"
+                      cachedName="CODIGO_CLIENTE"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_CLIENTE]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_CLIENTE]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[NOMBRE_CONTACTO]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NOMBRE_CONTACTO"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE_CONTACTO]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[NOMBRE_CONTACTO]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[APELLIDO_CONTACTO]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="APELLIDO_CONTACTO"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[APELLIDO_CONTACTO]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[APELLIDO_CONTACTO]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[TELEFONO]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="TELEFONO"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[TELEFONO]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[TELEFONO]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[FAX]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="FAX"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[FAX]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[FAX]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[LINEA_DIRECCION1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LINEA_DIRECCION1"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[LINEA_DIRECCION1]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LINEA_DIRECCION1]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[LINEA_DIRECCION2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LINEA_DIRECCION2"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[LINEA_DIRECCION2]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LINEA_DIRECCION2]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[CIUDAD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CIUDAD"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CIUDAD]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CIUDAD]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[REGION]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="REGION"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[REGION]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[REGION]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[PAIS]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="PAIS"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[PAIS]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[PAIS]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[CODIGO_POSTAL]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CODIGO_POSTAL"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_POSTAL]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_POSTAL]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      cachedDataType="numeric"
+                      cachedName="CODIGO_EMPLEADO_REP_VENTAS"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_EMPLEADO_REP_VENTAS]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[LIMITE_CREDITO]"
+                      cachedDataType="numeric"
+                      cachedName="LIMITE_CREDITO"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[LIMITE_CREDITO]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[LIMITE_CREDITO]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[NOMBRE_CLIENTE_C]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="NOMBRE_CLIENTE_C"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE_CLIENTE]"
+                      lineageId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Output].Columns[NOMBRE_CLIENTE_C]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].Columns[FECHA]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA"
+                      externalMetadataColumnId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[FECHA]"
+                      lineageId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Output].Columns[FECHA]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_CLIENTE]"
+                      dataType="numeric"
+                      name="CODIGO_CLIENTE"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE_CLIENTE]"
+                      dataType="wstr"
+                      length="50"
+                      name="NOMBRE_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE_CONTACTO]"
+                      dataType="wstr"
+                      length="30"
+                      name="NOMBRE_CONTACTO" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[APELLIDO_CONTACTO]"
+                      dataType="wstr"
+                      length="30"
+                      name="APELLIDO_CONTACTO" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[TELEFONO]"
+                      dataType="wstr"
+                      length="15"
+                      name="TELEFONO" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[FAX]"
+                      dataType="wstr"
+                      length="15"
+                      name="FAX" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[LINEA_DIRECCION1]"
+                      dataType="wstr"
+                      length="50"
+                      name="LINEA_DIRECCION1" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[LINEA_DIRECCION2]"
+                      dataType="wstr"
+                      length="50"
+                      name="LINEA_DIRECCION2" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CIUDAD]"
+                      dataType="wstr"
+                      length="50"
+                      name="CIUDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[REGION]"
+                      dataType="wstr"
+                      length="50"
+                      name="REGION" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[PAIS]"
+                      dataType="wstr"
+                      length="50"
+                      name="PAIS" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_POSTAL]"
+                      dataType="wstr"
+                      length="10"
+                      name="CODIGO_POSTAL" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_EMPLEADO_REP_VENTAS]"
+                      dataType="numeric"
+                      name="CODIGO_EMPLEADO_REP_VENTAS"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[LIMITE_CREDITO]"
+                      dataType="numeric"
+                      name="LIMITE_CREDITO"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input].ExternalColumns[FECHA]"
+                      dataType="dbDate"
+                      name="FECHA" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copia de Clientes\clienteOra.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\clienteOra.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\clienteOra.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\clienteOra.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copia de Clientes\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Copia de Clientes\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copia de Clientes\Data Conversion.Inputs[Data Conversion Input].Columns[NOMBRE_CLIENTE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="NOMBRE_CLIENTE"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[NOMBRE_CLIENTE]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Copia de Clientes\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Output].Columns[NOMBRE_CLIENTE_C]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Output].Columns[NOMBRE_CLIENTE_C]"
+                      name="NOMBRE_CLIENTE_C"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[NOMBRE_CLIENTE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Copia de Clientes\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copia de Clientes\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Copia de Clientes\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Copia de Clientes\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Output].Columns[FECHA]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Output].Columns[FECHA]"
+                      name="FECHA"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Copia de Clientes\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copia de Clientes\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select codigo_cliente from clienteOra</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select codigo_cliente from clienteOra) [refTable]
+where [refTable].[codigo_cliente] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="codigo_cliente" dataType="DT_NUMERIC" length="0" precision="10" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_CLIENTE]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copia de Clientes\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{BEA026A1-7350-45B8-BEA2-36E23A28F17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.STAGING]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copia de Clientes\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copia de Clientes\Lookup.Inputs[Lookup Input].Columns[CODIGO_CLIENTE]"
+                      cachedDataType="numeric"
+                      cachedName="CODIGO_CLIENTE"
+                      cachedPrecision="10"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_CLIENTE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">codigo_cliente</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copia de Clientes\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Copia de Clientes\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Copia de Clientes\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Copia de Clientes\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Copia de Clientes\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Copia de Clientes\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copia de Clientes\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update clienteOra set fecha=?
+where codigo_cliente=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copia de Clientes\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{BEA026A1-7350-45B8-BEA2-36E23A28F17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.STAGING]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input].Columns[FECHA]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA"
+                      externalMetadataColumnId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Output].Columns[FECHA]" />
+                    <inputColumn
+                      refId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input].Columns[CODIGO_CLIENTE]"
+                      cachedDataType="numeric"
+                      cachedName="CODIGO_CLIENTE"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output].Columns[CODIGO_CLIENTE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copia de Clientes\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Copia de Clientes\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copia de Clientes\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copia de Clientes\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copia de Clientes\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copia de Clientes.Paths[Data Conversion Output]"
+              endId="Package\Copia de Clientes\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Copia de Clientes\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Copia de Clientes.Paths[Derived Column Output]"
+              endId="Package\Copia de Clientes\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Copia de Clientes\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Copia de Clientes.Paths[Lookup Match Output]"
+              endId="Package\Copia de Clientes\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Copia de Clientes\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Copia de Clientes.Paths[Lookup No Match Output]"
+              endId="Package\Copia de Clientes\clienteOra.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Copia de Clientes\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Copia de Clientes.Paths[OLE DB Source Output]"
+              endId="Package\Copia de Clientes\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Copia de Clientes\Cliente Oracle.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Copia de Clientes"
+          TopLeft="204,85" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copia de Clientes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Copia de Clientes\Cliente Oracle"
+          TopLeft="177,58" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Copia de Clientes\clienteOra"
+          TopLeft="316,374" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Copia de Clientes\Data Conversion"
+          TopLeft="321,181" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Copia de Clientes\Lookup"
+          TopLeft="305,263" />
+        <EdgeLayout
+          Id="Package\Copia de Clientes.Paths[Data Conversion Output]"
+          TopLeft="399,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-37.5,40"
+              Start="0,0"
+              End="-37.5,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="-4,20" />
+                  <mssgle:LineSegment
+                    End="-33.5,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.5,20"
+                    Point2="-37.5,20"
+                    Point3="-37.5,24" />
+                  <mssgle:LineSegment
+                    End="-37.5,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.75,25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Copia de Clientes.Paths[Lookup No Match Output]"
+          TopLeft="361.5,305">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18,69"
+              Start="0,0"
+              End="18,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="14,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,34.5"
+                    Point2="18,34.5"
+                    Point3="18,38.5" />
+                  <mssgle:LineSegment
+                    End="18,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.6750390625,39.5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Copia de Clientes\OLE DB Command"
+          TopLeft="470,369" />
+        <EdgeLayout
+          Id="Package\Copia de Clientes.Paths[Lookup Match Output]"
+          TopLeft="379,305">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="174,64"
+              Start="0,0"
+              End="174,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.1361256544503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.1361256544503"
+                    Point2="0,26.1361256544503"
+                    Point3="4,26.1361256544503" />
+                  <mssgle:LineSegment
+                    End="170,26.1361256544503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="170,26.1361256544503"
+                    Point2="174,26.1361256544503"
+                    Point3="174,30.1361256544503" />
+                  <mssgle:LineSegment
+                    End="174,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="38.80861328125,31.1361256544503,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Copia de Clientes\Derived Column"
+          TopLeft="528,119" />
+        <EdgeLayout
+          Id="Package\Copia de Clientes.Paths[OLE DB Source Output]"
+          TopLeft="321,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="207,61"
+              Start="0,0"
+              End="199.5,61">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.5,0"
+                    Point2="103.5,0"
+                    Point3="103.5,4" />
+                  <mssgle:LineSegment
+                    End="103.5,57" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.5,57"
+                    Point2="103.5,61"
+                    Point3="107.5,61" />
+                  <mssgle:LineSegment
+                    End="199.5,61" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Copia de Clientes.Paths[Derived Column Output]"
+          TopLeft="528,145.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-51,56.3333333333333"
+              Start="0,0"
+              End="-43.5,56.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-17.5229357798165,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.5229357798165,0"
+                    Point2="-21.5229357798165,0"
+                    Point3="-21.5229357798165,4" />
+                  <mssgle:LineSegment
+                    End="-21.5229357798165,52.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.5229357798165,52.3333333333333"
+                    Point2="-21.5229357798165,56.3333333333333"
+                    Point3="-25.5229357798165,56.3333333333333" />
+                  <mssgle:LineSegment
+                    End="-43.5,56.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copia de Clientes\Cliente Oracle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copia de Clientes\clienteOra">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copia de Clientes\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

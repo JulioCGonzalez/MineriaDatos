@@ -1,0 +1,299 @@
+getwd()
+datos<-read.csv(file = "Files/Pasajeros.csv",header = T,sep = ",",encoding = "UTF-8")
+View(datos)
+class(datos)
+head(datos)
+names(datos)
+glimpse(datos)
+install.packages("dplyr")
+library(dplyr)
+glimpse(datos)
+str(datos)
+dim(datos)
+colnames(datos)
+rownames(datos)
+colnames(datos)<-c
+colnames(datos)<-c("aeropuerto","mes","anio","nacionales","extranjeros","transito","exentos","total")
+# cambiar el nombre a una sola columna
+names(datos)[1]<-"aeropuerto"
+colnames(datos)<-c("aeropuerto","mes","anio","nacionales","extranjeros","transito","exentos","total")
+# cambiar el nombre a una sola columna
+names(datos)[1]<-"aeropuerto"
+colnames(datos)<-c("aeropuerto","mes","anio","nacionales","extranjeros","transito","exentos","total")
+# cambiar el nombre a una sola columna
+names(datos)[1]<-"aeropuerto"
+unique(datos$aeropuerto)
+datos$aeropuerto<-str_trim(str_replace(datos$aeropuerto,"Aeropuerto Internacional",""))
+library(stringr)
+datos$aeropuerto<-str_trim(str_replace(datos$aeropuerto,"Aeropuerto Internacional",""))
+unique(datos$aeropuerto)
+datos[1,c(1,3,5)]
+datos[,]
+datos[c(2,4,5),3:7]
+datos %>% select("mes","anio")
+datos$anio
+datos$mes<- as.factor(datos$mes)
+datos$anio
+datos$mes<- as.factor(datos$mes)
+datos$fecha<-as.Date(datos$fecha)
+prueba<-datos %>% select("mes","anio")
+datos %>% select("mes","anio")
+prueba<-datos %>% select("mes","anio")
+datos$anio
+datos$mes<- as.factor(datos$mes)
+datos$fecha<-as.Date(datos$fecha)
+#crear o modificar columnas de un dataframe
+datos<-datos %>%  mutate(sdnacionales=sqrt(nacionales) )
+View(datos)
+View(prueba)
+datos_aeropuerto<-datos %>% select(aeropuerto,nacionales)
+View(datos_aeropuerto)
+is.na(datos)        # Vector lógico con T==NA
+any(is.na(datos))   # TRUE = hay al menos un valor NA
+anyNA(datos)        # Alternativa a lo anterior
+which(is.na(datos)) # Indica las coordenadas donde están los NA
+mean(is.na(datos))  # Porcentaje de valores NA
+sum(is.na(datos))   # Cantidad de valores perdidos en el vector
+table(datos$nacionales, useNA = "always")
+sum(is.na(datos)) / length(datos) #proporción de valores faltantes
+apply(is.na(datos), 2, mean)   # Porcentaje de NA por columna
+apply(is.na(datos), 2, sum)    # Cantidad de NA por columna
+apply(is.na(datos), 2, which)  # Posición de NA por columna
+sapply(datos, function(x) sum(is.na(x)))
+heatmaply::heatmaply_na(datos) # ver los na de forma grafica
+install.packages("heatmaply")
+library(heatmaply)
+mifuncion<-function(valor1,valor2) {
+resultado = valor1+valor2
+return( resultado)
+}
+valores <-mifuncion(2,4)
+plot(datos$nacionales)
+ggplot(datos, aes(anio,nacionales)) +
+#geom_hex() +
+geom_jitter(width =.3, alpha = 0.5) +
+labs(title="Diagrama de dispersión",
+subtitle= "ScatterPlot",
+caption="Fuente: CPS1985 (paquete AER)",
+x="Años",
+y="Cantidad de nacionales") +
+scale_fill_continuous("Pasajeros nacionales") +
+theme_classic()
+hist(datos$nacionales, main = "Histograma de las ventas",
+xlab = "pasajeros", ylab = "Frecuencia",
+col = "purple")
+boxplot(datos$nacionales,boxwex=0.8)
+unique(datos$aeropuerto)
+boxplot(datos$anio,boxwex=0.8)
+library(dplyr)
+nacionales_ae1<-datos %>% filter(aeropuerto=="Limón" )
+boxplot(nacionales ~ anio,
+col = rainbow(ncol(nacionales_ae1)),
+data = nacionales_ae1,
+boxwex=0.8,
+main = "Nacionales por mes",
+scale_y_continuous(labels=scales::comma)
+)
+stripchart(data=datos,nacionales ~ anio,vertical = TRUE,
+method = "jitter",pch=19,add = TRUE,
+col = 1:12
+)
+ggplot(datos, aes(x =aeropuerto , y = nacionales, fill = aeropuerto) ) +
+geom_boxplot(alpha = 0.3, outlier.colour = "blue") +
+labs(x = "Nacionales", y = "Pasajeros") +
+guides(fill = FALSE) +
+coord_flip() +
+geom_point(stat =  "summary", fun.y = mean, shape = 16, size = 4, color = "red") +
+geom_point(position = position_jitter(width = 0.1), alpha = 0.2)
+conjunto <-datos %>% filter(datos$aeropuerto=="Daniel Oduber Quirós")
+unique(datos$aeropuerto)
+atipicos(conjunto,conjunto$aeropuerto,conjunto$extranjeros)
+hist(valores, prob = TRUE,
+main = "Histograma con curva normal", ylab = "Densidad", col="ivory")
+options(scipen = 99999)
+x <- seq(min(valores), max(valores), length = length(valores))
+f <- dnorm(x, mean = mean(valores), sd = sd(valores))
+lines(x, f, col = "red", lwd = 2)
+lines(density(valores), lwd = 2, col = 'blue')
+legend("topright", c("Histograma", "Densidad", "Normal"), box.lty = 0,
+lty = 1, col = c("black", "blue", "red"), lwd = c(1, 2, 2))
+par(new = TRUE)
+boxplot(valores, horizontal = TRUE, axes = FALSE,
+lwd = 2, col = rgb(0, 1, 1, alpha = 0.15))
+grupos<- datos %>% group_by(aeropuerto) %>%
+summarise(totales=sum(total))
+grupos
+unique(datos$aeropuerto)
+ggplot(grupos,aes(x=aeropuerto,y=totales,fill=aeropuerto))+
+geom_bar(stat="identity")+
+geom_text(aes(label = format(totales, big.mark= ".", trim = TRUE)),
+position = "dodge",vjust = 0,fontface = "bold",size=5,color="blue"
+)+
+ggtitle("Grafico de pasajeros por aeropuerto")+
+xlab("Aeropuertos") +
+ylab("Totales") +
+scale_y_continuous(labels=scales::comma)+
+scale_fill_brewer(palette = "Set1") +
+theme(legend.position="none")+
+coord_flip()+
+theme(legend.position = "none")
+conjunto <-datos %>% filter(datos$aeropuerto=="Daniel Oduber Quirós")
+valores<-datos$nacionales
+valores<-na.omit(valores)
+hist(valores, prob = TRUE,
+main = "Histograma con curva normal", ylab = "Densidad", col="ivory")
+atipicos(conjunto,conjunto$aeropuerto,conjunto$extranjeros)
+atipicos(conjunto,conjunto$aeropuerto,conjunto$extranjeros)
+conjunto <-datos %>% filter(datos$aeropuerto=="Daniel Oduber Quirós")
+atipicos(conjunto,conjunto$aeropuerto,conjunto$extranjeros)
+valores<-datos$nacionales
+valores<-na.omit(valores)
+atipicos<-function(df,valorx,valory){
+grafico <- ggplot(df, aes(x =valorx , y = valory, fill = valorx) ) +
+geom_boxplot(alpha = 0.3, outlier.colour = "blue") +
+labs(x = "Nacionales", y = "Pasajeros") +
+guides(fill = FALSE) +
+coord_flip() +
+geom_point(stat =  "summary", fun.y = mean, shape = 16, size = 4, color = "red") +
+geom_point(position = position_jitter(width = 0.1), alpha = 0.2)
+return(grafico)
+}
+conjunto <-datos %>% filter(datos$aeropuerto=="Daniel Oduber Quirós")
+unique(datos$aeropuerto)
+atipicos(conjunto,conjunto$aeropuerto,conjunto$extranjeros)
+hist(valores, prob = TRUE,
+main = "Histograma con curva normal", ylab = "Densidad", col="ivory")
+x <- seq(min(valores), max(valores), length = length(valores))
+f <- dnorm(x, mean = mean(valores), sd = sd(valores))
+lines(x, f, col = "red", lwd = 2)
+lines(density(valores), lwd = 2, col = 'blue')
+legend("topright", c("Histograma", "Densidad", "Normal"), box.lty = 0,
+lty = 1, col = c("black", "blue", "red"), lwd = c(1, 2, 2))
+par(new = TRUE)
+boxplot(valores, horizontal = TRUE, axes = FALSE,
+lwd = 2, col = rgb(0, 1, 1, alpha = 0.15))
+grupos<- datos %>% group_by(aeropuerto) %>%
+summarise(totales=sum(total))
+grupos
+unique(datos$aeropuerto)
+ggplot(grupos,aes(x=aeropuerto,y=totales,fill=aeropuerto))+
+geom_bar(stat="identity")+
+geom_text(aes(label = format(totales, big.mark= ".", trim = TRUE)),
+position = "dodge",vjust = 0,fontface = "bold",size=5,color="blue"
+)+
+ggtitle("Grafico de pasajeros por aeropuerto")+
+xlab("Aeropuertos") +
+ylab("Totales") +
+scale_y_continuous(labels=scales::comma)+
+scale_fill_brewer(palette = "Set1") +
+theme(legend.position="none")+
+coord_flip()+
+theme(legend.position = "none")
+## El histograma
+hist(datos$nacionales)
+## El boxplot
+boxplot(datos$nacionales)
+grupo01<-datos %>% filter(aeropuerto=="Juan Santamaría")
+ggplot(grupo01, aes(aeropuerto, nacionales)) +
+geom_boxplot(notch = TRUE,fill = "white", colour = "#3366FF")
+library(RODBC)
+con.SqlServer <-odbcConnect("ODBC_SQL",uid = "sa",pwd = "Admin12345")
+facturas<-query.employees.sqlserver<-sqlQuery(con.SqlServer,"select *  from invoices")
+View(facturas)
+library(RODBC)
+library(dplyr)
+con.SqlServer <-odbcConnect("ODBC_SQL",uid = "sa",pwd = "Admin12345")
+orders <- sqlQuery(con, "SELECT OrderID, ShipCountry FROM Orders")
+con.SqlServer <- odbcConnect("ODBC_SQL", uid = "sa", pwd = "Admin12345")
+orders <- sqlQuery(con.SqlServer, "SELECT OrderID, ShipCountry FROM Orders")
+order_details <- sqlQuery(con.SqlServer, "SELECT OrderID, ProductID, UnitPrice, Quantity FROM [Order Details]")
+products <- sqlQuery(con.SqlServer, "SELECT ProductID, ProductName FROM Products")
+sales_data <- order_details %>%
+inner_join(orders, by = "OrderID") %>%
+inner_join(products, by = "ProductID") %>%
+mutate(TotalSales = UnitPrice * Quantity)
+odbcClose(con.SqlServer)
+save(sales_data, file = "sales_data.RData")
+library(shiny)
+library(shiny)
+library(shiny)
+library(DT)
+shinyUI(fluidPage(
+titlePanel("Northwind Sales Data"),
+sidebarLayout(
+sidebarPanel(
+selectInput("country", "Select Country:", choices = NULL, selected = NULL)
+),
+mainPanel(
+DTOutput("sales_table"),
+textOutput("total_sales")
+)
+)
+))
+shinyUI(fluidPage(
+titlePanel("Northwind Sales Data"),
+sidebarLayout(
+sidebarPanel(
+selectInput("country", "Select Country:", choices = NULL, selected = NULL)
+),
+mainPanel(
+DTOutput("sales_table"),
+textOutput("total_sales")
+)
+)
+))
+# ui.R
+library(shiny)
+library(DT)
+shinyUI(fluidPage(
+titlePanel("Northwind Sales Data"),
+sidebarLayout(
+sidebarPanel(
+selectInput("country", "Select Country:", choices = NULL, selected = NULL)
+),
+mainPanel(
+DTOutput("sales_table"),
+textOutput("total_sales")
+)
+)
+))
+runApp('Laboratorio')
+# model.R
+library(RODBC)
+library(dplyr)
+# Conectar a la base de datos Northwind
+con.SqlServer <- odbcConnect("ODBC_SQL", uid = "sa", pwd = "Admin12345")
+# Extraer datos de las tablas Orders, OrderDetails y Products
+orders <- sqlQuery(con.SqlServer, "SELECT OrderID, ShipCountry FROM Orders")
+order_details <- sqlQuery(con.SqlServer, "SELECT OrderID, ProductID, UnitPrice, Quantity FROM [Order Details]")
+products <- sqlQuery(con.SqlServer, "SELECT ProductID, ProductName FROM Products")
+# Combinar las tablas
+sales_data <- order_details %>%
+inner_join(orders, by = "OrderID") %>%
+inner_join(products, by = "ProductID") %>%
+mutate(TotalSales = UnitPrice * Quantity)
+# Cerrar la conexión
+odbcClose(con.SqlServer)
+# Exportar el dataframe para usarlo en server.R
+save(sales_data, file = "sales_data.RData")
+shiny::runApp()
+runApp()
+# model.R
+library(RODBC)
+library(dplyr)
+# Conectar a la base de datos Northwind
+con.SqlServer <- odbcConnect("ODBC_SQL", uid = "sa", pwd = "Admin12345")
+# Extraer datos de las tablas Orders, OrderDetails y Products
+orders <- sqlQuery(con.SqlServer, "SELECT OrderID, ShipCountry FROM Orders")
+order_details <- sqlQuery(con.SqlServer, "SELECT OrderID, ProductID, UnitPrice, Quantity FROM [Order Details]")
+products <- sqlQuery(con.SqlServer, "SELECT ProductID, ProductName FROM Products")
+# Combinar las tablas
+sales_data <- order_details %>%
+inner_join(orders, by = "OrderID") %>%
+inner_join(products, by = "ProductID") %>%
+mutate(TotalSales = UnitPrice * Quantity)
+# Cerrar la conexión
+odbcClose(con.SqlServer)
+# Exportar el dataframe para usarlo en server.R
+save(sales_data, file = "sales_data.RData")
+runApp()
